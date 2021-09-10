@@ -18,13 +18,13 @@ class CircularPath {
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
     75,
-    (window.innerWidth / window.innerHeight) * 2,
+    window.innerWidth / window.innerHeight,
     0.1,
     1000
 );
 
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight / 2);
+renderer.setSize(window.innerWidth, window.innerHeight);
 canvas = renderer.domElement;
 document.body.appendChild(canvas);
 
@@ -75,7 +75,7 @@ canvas.addEventListener("click", () => {
 });
 
 document.body.onresize = function() {
-    renderer.setSize(window.innerWidth, window.innerHeight / 2);
-    camera.aspect = (window.innerWidth / window.innerHeight) * 2;
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
 };
